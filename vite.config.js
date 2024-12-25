@@ -16,6 +16,7 @@ export default defineConfig({
                 todolist: "todolist.html",
                 contact: "contact.html",
                 product: "product.html",
+                note: "note.html",
             }
         }
     }
