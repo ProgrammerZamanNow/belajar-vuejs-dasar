@@ -6,7 +6,7 @@ const person = reactive({
   lastName: ""
 })
 
-function sayHello(){
+function sayHello(event){
   person.firstName = document.getElementById("firstName").value;
   person.lastName = document.getElementById("lastName").value;
 }
@@ -18,18 +18,23 @@ const fullName = computed((oldName) => {
 
 const counter = ref(0);
 
-function increment(){
-  console.log(`increment called`);
-  counter.value++;
+function changeFirstName(event){
+  person.firstName = event.target.value;
+}
+
+function changeLastName(event){
+  person.lastName = event.target.value;
 }
 </script>
 
 <template>
   <div>
-    <button v-on:click="increment">Increment {{counter}}</button> <br>
-    <input placeholder="First Name" type="text" id="firstName"> <br>
-    <input placeholder="Last Name" type="text" id="lastName"> <br>
-    <button v-on:click="sayHello">Say Hello</button>
+    <form>
+      <button v-on:click="counter++">Increment {{counter}}</button> <br>
+      <input placeholder="First Name" type="text" id="firstName" v-on:input="changeFirstName"> <br>
+      <input placeholder="Last Name" type="text" id="lastName" @input="changeLastName"> <br>
+      <button v-on:click.prevent="sayHello">Say Hello</button>
+    </form>
   </div>
   <h1>Hello {{ fullName }}</h1>
 </template>
