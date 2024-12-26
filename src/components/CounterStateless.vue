@@ -5,18 +5,16 @@ const {counter, name, increment} = defineProps({
   name: String,
   increment: Number
 })
-const emits = defineEmits(["click"]);
 
-function buttonClick() {
-  emits("click", increment);
-}
-
+defineOptions({
+  inheritAttrs: false
+})
 </script>
 
 <template>
   <div>
     <h1>Counter {{ name }} : {{ counter }}</h1>
-    <button @click="buttonClick">Increment {{ name }}</button>
+    <button @click.stop="$emit('click', increment)">Increment {{ name }}</button>
   </div>
 </template>
 
