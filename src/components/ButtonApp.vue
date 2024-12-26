@@ -1,14 +1,26 @@
 <script setup>
 
 import MyButton from "./MyButton.vue";
+import Container from "./Container.vue";
 
-function clickHandler(){
+function clickHandler() {
   alert("You click me");
 }
 </script>
 
 <template>
-<MyButton class="button" @click="clickHandler" name="Eko" contoh="Kurniawan"/>
+  <Container title="Contoh Button">
+    <template #header="attributes">
+      <h1>Button App {{attributes.counter}}</h1>
+    </template>
+    <template v-slot:default="attributes">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci asperiores cumque eius, fuga illum inventore maxime nobis nostrum perferendis quaerat sed similique sunt. Beatae explicabo magnam optio. Autem, debitis, enim!</p>
+      <MyButton class="button" @click="clickHandler" :name="attributes.counter" contoh="Kurniawan"/>
+    </template>
+    <template #footer>
+      <p>Copyright 2024 @ProgrammerZamanNow</p>
+    </template>
+  </Container>
 </template>
 
 <style scoped>
