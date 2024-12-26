@@ -19,6 +19,7 @@ export default defineConfig({
                 note: "note.html",
                 button: "button.html",
                 home: "home.html",
+                profile: "profile.html",
             }
         }
     }
